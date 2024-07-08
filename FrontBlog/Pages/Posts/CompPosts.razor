@@ -1,7 +1,10 @@
 ﻿@page "/posts"
 @using FrontBlog.Servicios.IServicio;
 @using FrontBlog.Shared
+
 @inject IPostServicio postsServicio
+@inject IJSRuntime JsRuntime
+
 
 <h1 class="text-center">Lista de Posts</h1>
 
@@ -67,6 +70,6 @@
     </div>
 </div>
 
-<ConfirmacionBorrado ProcesandoComponentePadre="estaProcesando">
+<ConfirmacionBorrado ProcesandoComponentePadre="estaProcesando" CambioConfirmacion="Click_Confirmacion_Borrado">
 
 </ConfirmacionBorrado>

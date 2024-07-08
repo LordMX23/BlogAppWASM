@@ -125,7 +125,7 @@ namespace ApiBlog.Controllers
             return NoContent();
         }
 
-        [Authorize]
+        // [Authorize]
         [HttpDelete("{postId:int}", Name = "BorrarPost")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]

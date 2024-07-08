@@ -56,7 +56,7 @@ namespace FrontBlog.Servicios
 
         public async Task<bool> EliminarPost(int PostId)
         {
-            var response = await _cliente.GetAsync($"{Inicializar.UrlBaseApi}api/posts/{PostId}");
+            var response = await _cliente.DeleteAsync($"{Inicializar.UrlBaseApi}api/posts/{PostId}");
             if (response.IsSuccessStatusCode)
             {
                 return true;
