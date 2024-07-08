@@ -1,0 +1,95 @@
+﻿@page "/crear-post"
+@using FrontBlog.Servicios.IServicio
+
+@inject IPostServicio postsServicio
+@inject IJSRuntime JsRuntime
+@inject NavigationManager navigationManager
+
+
+<h1 class="text-center">Crear Post</h1>
+
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <dic class="col-7">
+                <h4 class="card-title text-dark">Nuevo Post</h4>
+            </dic>
+        </div>
+    </div>
+    <div class="card-body">
+        <EditForm Model="CrearPost" OnValidSubmit="@( () => MenjadorOnCrearPost() )">
+            <DataAnnotationsValidator></DataAnnotationsValidator>
+            @* <ValidationSummary></ValidationSummary> *@
+            <div class="container">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-2">
+                            <label>Titulo: </label>
+                        </div>
+                        <div class="col-6">
+                            <InputText @bind-Value="CrearPost.Titulo" class="form-control" placeholder="Ingresa el titulo"></InputText>
+                            <ValidationMessage For="() => CrearPost.Titulo"></ValidationMessage>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-2">
+                            <label>Descripcion: </label>
+                        </div>
+                        <div class="col-6">
+                            <InputText @bind-Value="CrearPost.Descripcion" class="form-control" placeholder="Ingresa la descripcion"></InputText>
+                            <ValidationMessage For="() => CrearPost.Descripcion"></ValidationMessage>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-2">
+                            <label>Etiquetas: </label>
+                        </div>
+                        <div class="col-6">
+                            <InputText @bind-Value="CrearPost.Etiquetas" class="form-control" placeholder="Ingresa las etiquetas"></InputText>
+                            <ValidationMessage For="() => CrearPost.Etiquetas"></ValidationMessage>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <h4>Imagen Post</h4>
+                            <InputFile OnChange="@ManejadorOnSubidaArchivo"></InputFile>
+                            <br />
+                            @if (imagenPost != null)
+                            {
+                                <img src="@imagenPost" style="width:300px" />
+                            }
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-gear-fill">&nbsp; Guardar Post</i>
+                            </button>
+                        </div>
+                        <div class="col-4">
+                            <NavLink href="posts" class="btn btn-secondary">
+                                <i class="bi bi-arrow-fill">&nbsp; Volver</i>
+                            </NavLink>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </EditForm>
+    </div>
+</div>
